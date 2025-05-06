@@ -1,0 +1,14 @@
+name: diff
+description: A Dart library for calculating and applying diffs (changes) between lists and maps, supporting minimal change sets and patching.
+version: 1.0.0
+repository: https://github.com/auhgnayuo/dart_diff.git
+
+environment:
+  sdk: '>=2.19.6'
+
+dependencies:
+  collection: ^1.0.0
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
