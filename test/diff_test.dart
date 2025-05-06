@@ -18,8 +18,8 @@ void main() {
       final d = left.diffTo(right);
       stopwatch.stop();
       final t = stopwatch.elapsedMilliseconds;
-      final newRight = left.applyDiffs(d);
-      assert(const DeepCollectionEquality().equals(newRight, right));
+      final patched = left.applyDiffs(d);
+      assert(const DeepCollectionEquality().equals(patched, right));
       print("list l: $left\tr: $right\td: $d\t t: $t");
     }
   });
@@ -36,8 +36,8 @@ void main() {
       final d = left.diffTo(right);
       stopwatch.stop();
       final t = stopwatch.elapsedMilliseconds;
-      final newRight = left.applyDiffs(d);
-      assert(const DeepCollectionEquality().equals(newRight, right));
+      final patched = left.applyDiffs(d);
+      assert(const DeepCollectionEquality().equals(patched, right));
       print("map l: $left\tr: $right\td: $d\t t: $t");
     }
   });
