@@ -18,14 +18,12 @@ abstract class Diff {
   ///
   /// Supports List and Map types. Throws [UnimplementedError] for unsupported types.
   static List<Diff> between(dynamic left, dynamic right) {
-    if ((left is List && (right is List || right == null)) ||
-        (right is List && (left is List || left == null))) {
-      return (left ?? []).diffTo(right ?? []);
-    } else if ((left is Map && (right is Map || right == null)) ||
-        (right is Map && (left is Map || left == null))) {
-      return (left ?? {}).diffTo(right ?? {});
+    if (left is List && right is List) {
+      return left.diffTo(right);
+    } else if (left is Map && right is Map) {
+      return left.diffTo(right);
     }
-    throw UnimplementedError();
+    throw UnimplementedError('Unsupported type: $left, $right');
   }
 
   /// Creates a [Diff] instance from a JSON map.
@@ -40,7 +38,7 @@ abstract class Diff {
       case 'movement':
         return Movement.fromJson(json);
       default:
-        throw UnimplementedError();
+        throw UnimplementedError('Unknown diff type: ${json['type']}');
     }
   }
 
@@ -55,7 +53,7 @@ abstract class Diff {
     } else if (this is Movement) {
       return (this as Movement).toJson();
     }
-    throw UnimplementedError();
+    throw UnimplementedError('Unknown diff type: $runtimeType');
   }
 }
 

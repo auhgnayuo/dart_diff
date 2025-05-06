@@ -14,16 +14,14 @@ extension DiffMap<K, V> on Map<K, V> {
     final diffs = <Diff>[];
     final allKeys = <K>{...keys, ...other.keys};
     for (final key in allKeys) {
-      final value = this[key];
-      final otherValue = other[key];
-      if (value != null && otherValue == null) {
+      if (containsKey(key) && !other.containsKey(key)) {
         diffs.add(Deletion(key));
-      } else if (value == null && otherValue != null) {
-        diffs.add(Addition(key, otherValue));
-      } else if (value != null &&
-          otherValue != null &&
-          !equals(value, otherValue)) {
-        diffs.add(Update(key, otherValue));
+      } else if (!containsKey(key) && other.containsKey(key)) {
+        diffs.add(Addition(key, other[key]));
+      } else if (containsKey(key) &&
+          other.containsKey(key) &&
+          !equals(this[key] as V, other[key] as V)) {
+        diffs.add(Update(key, other[key]));
       }
     }
     return diffs;
