@@ -13,9 +13,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  diff: 
-    url: https://github.com/auhgnayuo/dart_diff.git
-    ref: main
+  diff: ^1.0.0
 ```
 
 Then run:
@@ -63,6 +61,3 @@ void main() {
 
 ## License
 MIT
-
-## Repository
-[GitHub](https://github.com/auhgnayuo/dart_diff.git)
