@@ -1,12 +1,12 @@
-# diff
+# Diff (Dart)
 
-A Dart library for calculating and applying diffs (changes) between lists and maps. It provides a unified interface to generate minimal change sets (additions, deletions, updates, movements) and apply them to transform collections efficiently.
+A cross-language library for calculating and applying diffs (changes) between collections (lists, maps). It provides a unified interface to generate minimal change sets (additions, deletions, updates, movements) and efficiently transform collections.
 
 ## Features
-- Compute minimal diffs between two lists or maps
-- Apply diffs (patch) to lists or maps
+- Compute minimal diffs between two collections (lists, maps)
+- Apply diffs (patch) to collections
 - Supports additions, deletions, updates, and movements
-- Simple API and extensible design
+- Simple, extensible, and consistent API
 
 ## Installation
 Add this to your `pubspec.yaml`:
@@ -57,6 +57,20 @@ void main() {
   final patched = left.applyDiffs(diffs);
   print(patched); // {a: 1, b: 3, c: 4}
 }
+```
+
+## API
+
+- `Diff`: Abstract base type for all diff operations.
+- `Update`: Represents an update operation.
+- `Addition`: Represents an addition operation.
+- `Deletion`: Represents a deletion operation.
+- `Movement`: Represents a movement operation.
+
+## Running Tests
+
+```sh
+dart test
 ```
 
 ## License
